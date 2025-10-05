@@ -1,0 +1,24 @@
+[project]
+name = "ha_hello"
+version = "0.1.0"
+description = "Hyperaccel Logging Tutorial"
+authors = [{ name = "Jinho Choi", email = "jinho.choi@hyperaccel.ai" }]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "loguru>=0.7.3",
+    "pybind11>=3.0.1",
+    "pytest>=8.4.2",
+    "setuptools>=80.9.0",
+    "tomli>=2.2.1",
+    "wheel>=0.41.2",
+]
+
+[build-system]
+requires = [
+    "setuptools>=80.9.0",
+    "wheel>=0.41.2",
+    "tomli>=2.2.1",
+    "pybind11>=3.0.1",
+]
+build-backend = "setuptools.build_meta"
