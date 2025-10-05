@@ -37,8 +37,8 @@ endif()
 
 find_package(pybind11 REQUIRED)
 
-# add lib/
-add_subdirectory(lib)
+# add clib/
+add_subdirectory(clib)
 
 # add spdlog
 add_subdirectory(3rdparty/spdlog)
