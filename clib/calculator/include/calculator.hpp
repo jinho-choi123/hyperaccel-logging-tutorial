@@ -1,7 +1,7 @@
 #ifndef CALCULATOR_HPP
 #define CALCULATOR_HPP
 
-#include <spdlog/spdlog.h>
+#include "logger.hpp"
 
 class Calculator {
 

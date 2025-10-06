@@ -39,14 +39,8 @@ class CMakeBuild(build_ext):
         Args:
             ext (Extension): The extension to build.
         """
-        extdir = str(
-            Path(self.get_ext_fullpath(ext.name)).parent.resolve() / "ha_hello" / "lib"
-        )
         cmake_args = [
             "-DBUILD_TESTS=OFF",
-            "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=" + extdir,
-            "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=" + extdir,
-            "-DCMAKE_BUILD_WITH_INSTALL_RPATH=ON",
             "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
         ]
 

@@ -1,6 +1,7 @@
 #ifndef BOOK_HPP
 #define BOOK_HPP
 
+#include "logger.hpp"
 #include <spdlog/spdlog.h>
 
 class Book {
