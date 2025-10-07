@@ -7,6 +7,10 @@ from setuptools import find_packages, setup
 from setuptools.command.build_ext import build_ext
 from setuptools.extension import Extension
 
+# Read dependencies from pyproject.toml
+with open("pyproject.toml", "rb") as f:
+    pyproject = tomli.load(f)
+
 
 class CMakeExtension(Extension):
     """CMakeExtension for building the ha_hello."""
@@ -39,9 +43,14 @@ class CMakeBuild(build_ext):
         Args:
             ext (Extension): The extension to build.
         """
+
+        spdlog_active_level = pyproject["tool"]["ha_hello"]["config"][
+            "spdlog_active_level"
+        ]
         cmake_args = [
             "-DBUILD_TESTS=OFF",
             "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+            "-DSPDLOG_ACTIVE_LEVEL=" + spdlog_active_level,
         ]
 
         build_temp = self.build_temp
@@ -49,12 +58,8 @@ class CMakeBuild(build_ext):
             os.makedirs(build_temp)
 
         subprocess.check_call(["cmake", ext.sourcedir] + cmake_args, cwd=build_temp)
-        subprocess.check_call(["cmake", "--build", ".", "--"], cwd=build_temp)
+        subprocess.check_call(["cmake", "--build", ".", "--", "-j32"], cwd=build_temp)
 
-
-# Read dependencies from pyproject.toml
-with open("pyproject.toml", "rb") as f:
-    pyproject = tomli.load(f)
 
 setup(
     name=pyproject["project"]["name"],

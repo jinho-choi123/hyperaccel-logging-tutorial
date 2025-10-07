@@ -14,6 +14,10 @@ dependencies = [
     "wheel>=0.41.2",
 ]
 
+[tool.ha_hello.config]
+spdlog_active_level = "SPDLOG_LEVEL_INFO" # SPDLOG_LEVEL_TRACE, SPDLOG_LEVEL_DEBUG, SPDLOG_LEVEL_INFO, SPDLOG_LEVEL_ERROR
+loguru_active_level = "TRACE"             # TRACE, DEBUG, INFO, WARN, ERROR
+
 [build-system]
 requires = [
     "setuptools>=80.9.0",
